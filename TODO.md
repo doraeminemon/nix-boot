@@ -1,0 +1,4 @@
+- [ ] Run hw-probe
+- [ ] Generate ssh key
+- [ ] Setting up git email and user name
+- [ ] Installing nerd font
