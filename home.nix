@@ -1,9 +1,9 @@
 { config, pkgs, ... }:
 
 {
-  home.username = "dodinhthyson";
-  home.homeDirectory = "/home/dodinhthyson";
-  home.stateVersion = "23.11";
+  home.username = "developer";
+  home.homeDirectory = "/home/developer";
+  home.stateVersion = "24.05";
 
   home.packages = with pkgs; [
     # GUI Tools (Nix versions of your requested IDs)
