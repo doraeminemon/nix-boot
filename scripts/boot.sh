@@ -1,6 +1,10 @@
 #!/bin/bash
 sudo apt update
-sudo apt install -y curl xz-utils
+sudo apt-get update && apt-get install -y \
+    curl \
+    xz-utils \
+    git \
+    && rm -rf /var/lib/apt/lists/*
 # --- Configuration ---
 NIX_DIR="$HOME/.nix"
 

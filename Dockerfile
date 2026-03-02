@@ -39,7 +39,7 @@ RUN mkdir -p /home/developer/.config/home-manager
 
 # 2. Copy your local home.nix into the image
 # (Assumes home.nix is in the same folder as your Dockerfile)
-COPY --chown=developer:developer home.nix /home/developer/.config/home-manager/home.nix
+COPY --chown=developer:developer /nix/home.nix /home/developer/.config/home-manager/home.nix
 
 # Run home-manager switch to apply the config
 RUN home-manager switch
