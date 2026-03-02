@@ -40,6 +40,7 @@
       sys-update = "sudo apt update && sudo apt upgrade -y";
     };
   };
+  # Add git config
 
   # 2. Fish Shell & Aliases
   programs.fish = {
