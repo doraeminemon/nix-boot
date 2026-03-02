@@ -2,15 +2,64 @@ package main
 
 import (
 	"fmt"
+	"net/http"
 	"os"
 	"os/exec"
+	"sync"
+	"time"
 
 	"github.com/charmbracelet/huh"
 )
 
+func checkURLs(urls []string) map[string]bool {
+	results := make(map[string]bool)
+	var mu sync.Mutex
+	var wg sync.WaitGroup
+
+	client := &http.Client{Timeout: 5 * time.Second}
+
+	for _, url := range urls {
+		wg.Add(1)
+		go func(u string) {
+			defer wg.Done()
+
+			resp, err := client.Get(u)
+			success := err == nil && resp.StatusCode >= 200 && resp.StatusCode < 400
+			if err == nil {
+				resp.Body.Close()
+			}
+
+			// Lock the map before writing to ensure thread safety
+			mu.Lock()
+			results[u] = success
+			mu.Unlock()
+		}(url)
+	}
+
+	wg.Wait()
+	return results
+}
+
+func testingConnectivity() map[string]bool {
+	urls := []string{
+		"https://cache.nixos.org",
+		"https://nixos.org",
+		"https://channels.nixos.org",
+		"https://releases.nixos.org",
+		"https://install.determinate.systems",
+		"https://github.com",
+		"https://raw.githubusercontent.com",
+		"https://tarballs.nixos.org",
+		"https://nodejs.org",
+		"https://proxy.golang.org",
+		"https://deno.land",
+	}
+	return checkURLs(urls)
+}
+
 func main() {
 	// input unix user name, user's real name, email
-	// testing-connectivity.sh -> rewrite into golang code
+	testingConnectivity()
 	// boot.sh ( install basic dependencies )
 	// nix.sh
 	// mise.sh ( installing programming languages )
