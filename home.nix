@@ -27,6 +27,8 @@
     hw-probe
     mise       # Runtime manager (Node, Go, Deno)
     starship   # Prompt
+    # add clipboard manager
+    # add screenshot with mac like functionality
   ];
 
   # 1. Kitty Terminal Config
