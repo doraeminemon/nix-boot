@@ -9,6 +9,16 @@ import (
 )
 
 func main() {
+	// input unix user name, user's real name, email
+	// testing-connectivity.sh -> rewrite into golang code
+	// boot.sh ( install basic dependencies )
+	// nix.sh
+	// mise.sh ( installing programming languages )
+	// change shell
+	// install-nfdl
+	// running hw-probe
+	// generating ssh-key
+	// configuring vscode
 	var email string
 	var installNix bool
 
