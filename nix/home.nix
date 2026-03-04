@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   home.username = "developer";
@@ -27,6 +27,8 @@
     hw-probe
     mise       # Runtime manager (Node, Go, Deno)
     starship   # Prompt
+    firefox-devedition
+    inputs.zen-browser.packages.${pkgs.system}.default
   ];
 
   # 1. Kitty Terminal Config

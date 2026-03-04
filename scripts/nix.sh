@@ -1,2 +1,2 @@
 #!/bin/bash
-home-manager switch
+home-manager switch --flake .

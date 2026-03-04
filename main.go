@@ -57,17 +57,7 @@ func testingConnectivity() map[string]bool {
 	return checkURLs(urls)
 }
 
-func main() {
-	// input unix user name, user's real name, email
-	testingConnectivity()
-	// boot.sh ( install basic dependencies )
-	// nix.sh
-	// mise.sh ( installing programming languages )
-	// change shell
-	// install-nfdl
-	// running hw-probe
-	// generating ssh-key
-	// configuring vscode
+func form() {
 	var email string
 	var installNix bool
 
@@ -83,19 +73,28 @@ func main() {
 		),
 	)
 	form.Run()
+}
 
-	// 2. Run Commands
-	fmt.Println("🚀 Starting setup...")
-
+func generatingSSHKey(email string) {
 	// Generate SSH Key
-	cmd := exec.Command("ssh-keygen", "-t", "ed25519", "-C", email, "-N", "", "-f", os.Getenv("HOME")+"/.ssh/id_ed25519")
+	cmd := exec.Command("ssh-keygen", "-t", "rsa", "-C", email, "-N", "", "-f", os.Getenv("HOME")+"/.ssh/id_rsa")
 	if err := cmd.Run(); err != nil {
 		fmt.Printf("❌ SSH Key gen failed: %v\n", err)
 	}
+}
 
-	if installNix {
-		// Run the Nix multi-user install script
-		fmt.Println("📦 Installing Nix...")
-		// ... execution logic here
-	}
+func main() {
+	// input unix user name, user's real name, email
+	testingConnectivity()
+	// boot.sh ( install basic dependencies )
+	// nix.sh
+	// mise.sh ( installing programming languages )
+	// change shell
+	// install-nfdl
+	// running hw-probe
+	// generating ssh-key
+	// configuring vscode
+
+	// 2. Run Commands
+	fmt.Println("🚀 Starting setup...")
 }

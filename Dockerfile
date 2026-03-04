@@ -42,6 +42,6 @@ RUN mkdir -p /home/developer/.config/home-manager
 COPY --chown=developer:developer /nix/home.nix /home/developer/.config/home-manager/home.nix
 
 # Run home-manager switch to apply the config
-RUN home-manager switch
+RUN home-manager switch --flake .
 
 CMD ["/bin/bash"]
